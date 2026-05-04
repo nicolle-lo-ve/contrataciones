@@ -1,0 +1,190 @@
+✓ Leído: adjudicaciones.xlsx (Excel, filas=63373, columnas=25)
+✓ Leído: proveedores.xlsx (Excel, filas=43483, columnas=9)
+✓ Leído: consorcios.xlsx (Excel, filas=27748, columnas=5)
+✓ Leído: contratos.xlsx (Excel, filas=62608, columnas=24)
+✓ Leído: entidades.csv (CSV con |, encoding=latin1, filas=3359, columnas=9)
+
+======================================================================
+ADJUDICACIONES
+======================================================================
+Primeras 3 filas:
+   codigoentidad  entidad_ruc  ... fecha_buenapro fecha_consentimiento_bp
+0         200049  20452308992  ...     03/04/2025              04/04/2025
+1             37  20527147612  ...     25/11/2025              03/12/2025
+2           1470  20188957146  ...     03/04/2025              10/04/2025
+
+[3 rows x 25 columns]
+
+Dimensiones: 63373 filas, 25 columnas
+
+Información general:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 63373 entries, 0 to 63372
+Data columns (total 25 columns):
+ #   Column                        Non-Null Count  Dtype  
+---  ------                        --------------  -----  
+ 0   codigoentidad                 63373 non-null  int64  
+ 1   entidad_ruc                   63373 non-null  object 
+ 2   entidad                       63373 non-null  object 
+ 3   tipoentidad                   63373 non-null  object 
+ 4   entidad_departamento          63373 non-null  object 
+ 5   codigoconvocatoria            63373 non-null  int64  
+ 6   objetocontractual             63373 non-null  object 
+ 7   tipoprocesoseleccion          63373 non-null  object 
+ 8   proceso                       63373 non-null  object 
+ 9   descripcion_proceso           63373 non-null  object 
+ 10  n_item                        63373 non-null  int64  
+ 11  descripcion_item              63373 non-null  object 
+ 12  estado_item                   63373 non-null  object 
+ 13  cantidad_adjudicado_item      63373 non-null  float64
+ 14  monto_referencial_item_soles  63372 non-null  float64
+ 15  monto_adjudicado_item_soles   63373 non-null  float64
+ 16  departamento_item             63088 non-null  object 
+ 17  moneda                        63373 non-null  object 
+ 18  unidad_medida                 63373 non-null  object 
+ 19  ruc_proveedor                 63373 non-null  object 
+ 20  proveedor                     63373 non-null  object 
+ 21  tipo_proveedor                63372 non-null  object 
+ 22  fecha_convocatoria            63373 non-null  object 
+ 23  fecha_buenapro                63352 non-null  object 
+ 24  fecha_consentimiento_bp       62533 non-null  object 
+dtypes: float64(3), int64(3), object(19)
+memory usage: 12.1+ MB
+----------------------------------------------------------------------
+
+======================================================================
+PROVEEDORES ADJUDICADOS
+======================================================================
+Primeras 3 filas:
+  RUC PROVEEDOR                                          proveedor  ... d_fec_iniciovigencia d_fec_finvigencia
+0   20601304521  INSTRUMENTAL INSUMOS Y EQUIPOS MEDICOS PERU SA...  ...           2026-03-28        2079-06-06
+1   20607080845                                 GRUPO TOKIO S.A.C.  ...           2021-04-16        2079-06-06
+2   10455713744             BRITTO TRUJILLO SARA DISNARDA DE JESUS  ...           2023-04-15        2079-06-06
+
+[3 rows x 9 columns]
+
+Dimensiones: 43483 filas, 9 columnas
+
+Información general:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 43483 entries, 0 to 43482
+Data columns (total 9 columns):
+ #   Column                Non-Null Count  Dtype         
+---  ------                --------------  -----         
+ 0   RUC PROVEEDOR         43483 non-null  object        
+ 1   proveedor             43483 non-null  object        
+ 2   origen                43483 non-null  object        
+ 3   departamento          43483 non-null  object        
+ 4   provincia             43483 non-null  object        
+ 5   distrito              43483 non-null  object        
+ 6   registro              43483 non-null  object        
+ 7   d_fec_iniciovigencia  43483 non-null  datetime64[ns]
+ 8   d_fec_finvigencia     43483 non-null  datetime64[ns]
+dtypes: datetime64[ns](2), object(7)
+memory usage: 3.0+ MB
+----------------------------------------------------------------------
+
+======================================================================
+CONSORCIOS ADJUDICADOS
+======================================================================
+Primeras 3 filas:
+    AÑO ruc_consorcio              consorcio  ruc_miembro                                            miembro
+0  2025       1720884  CONSORCIO POMARROSA I  20489536979  CONSTRUCTORA Y CONSULTORA 'FISA' SOCIEDAD ANON...
+1  2025       1736478       CONSORCIO CENEPA  20481134600                                        FECA S.A.C.
+2  2025       1698167    CONSORCIO QHALI KAY  10200447331                      BAZAN ORELLANA MIGUEL ENRIQUE
+
+Dimensiones: 27748 filas, 5 columnas
+
+Información general:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 27748 entries, 0 to 27747
+Data columns (total 5 columns):
+ #   Column         Non-Null Count  Dtype 
+---  ------         --------------  ----- 
+ 0   AÑO            27748 non-null  int64 
+ 1   ruc_consorcio  27748 non-null  object
+ 2   consorcio      27748 non-null  object
+ 3   ruc_miembro    27748 non-null  object
+ 4   miembro        27748 non-null  object
+dtypes: int64(1), object(4)
+memory usage: 1.1+ MB
+----------------------------------------------------------------------
+
+======================================================================
+CONTRATOS
+======================================================================
+Primeras 3 filas:
+   codigoentidad  codigoconvocatoria  ... fecha_vigencia_final  fecha_vigencia_fin_actualizada
+0         200276             1101143  ...           2025-05-20                      2025-05-20
+1          10146             1107037  ...           2026-09-30                      2026-09-30
+2         200261             1168043  ...           2025-11-29                      2025-11-29
+
+[3 rows x 24 columns]
+
+Dimensiones: 62608 filas, 24 columnas
+
+Información general:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 62608 entries, 0 to 62607
+Data columns (total 24 columns):
+ #   Column                          Non-Null Count  Dtype         
+---  ------                          --------------  -----         
+ 0   codigoentidad                   62608 non-null  int64         
+ 1   codigoconvocatoria              62608 non-null  int64         
+ 2   descripcion_proceso             62608 non-null  object        
+ 3   n_cod_contrato                  62608 non-null  int64         
+ 4   codigo_contrato                 62608 non-null  int64         
+ 5   num_contrato                    62608 non-null  object        
+ 6   num_item                        62608 non-null  int64         
+ 7   monto_contratado_total          62608 non-null  float64       
+ 8   monto_contratado_item           62608 non-null  float64       
+ 9   monto_adicional                 2718 non-null   float64       
+ 10  monto_reduccion                 1771 non-null   float64       
+ 11  monto_prorroga                  53 non-null     float64       
+ 12  monto_complementario            0 non-null      float64       
+ 13  moneda                          62608 non-null  object        
+ 14  ruc_contratista                 62608 non-null  object        
+ 15  ruc_destinatario_pago           62608 non-null  object        
+ 16  tieneresolucion                 860 non-null    object        
+ 17  urlcontrato                     62608 non-null  object        
+ 18  espublicado                     62608 non-null  int64         
+ 19  fecha_publicacion_contrato      62608 non-null  datetime64[ns]
+ 20  fecha_suscripcion_contrato      62608 non-null  datetime64[ns]
+ 21  fecha_vigencia_inicial          62608 non-null  datetime64[ns]
+ 22  fecha_vigencia_final            62608 non-null  datetime64[ns]
+ 23  fecha_vigencia_fin_actualizada  62606 non-null  datetime64[ns]
+dtypes: datetime64[ns](5), float64(6), int64(6), object(7)
+memory usage: 11.5+ MB
+----------------------------------------------------------------------
+
+======================================================================
+ENTIDADES CONTRATANTES
+======================================================================
+Primeras 3 filas:
+           RUC                                  NOMBRE_DE_ENTIDAD DEPARTAMENTO  ... CODCONSUCODE  ESTADO  ULTIMAACTUALIZACION
+0  20290898685                        ACADEMIA DE LA MAGISTRATURA         LIMA  ...         1940  Activo             17/07/13
+1  20556939781          AGENCIA DE COMPRAS DE LAS FUERZAS ARMADAS         LIMA  ...       201143  Activo             31/12/19
+2  20380799643  AGENCIA DE PROMOCION DE LA INVERSION PRIVADA -...         LIMA  ...        10001  Activo             25/09/15
+
+[3 rows x 9 columns]
+
+Dimensiones: 3359 filas, 9 columnas
+
+Información general:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 3359 entries, 0 to 3358
+Data columns (total 9 columns):
+ #   Column               Non-Null Count  Dtype  
+---  ------               --------------  -----  
+ 0   RUC                  3359 non-null   object 
+ 1   NOMBRE_DE_ENTIDAD    3359 non-null   object 
+ 2   DEPARTAMENTO         3359 non-null   object 
+ 3   PROVINCIA            3359 non-null   object 
+ 4   DISTRITO             3359 non-null   object 
+ 5   CODIGO_SIAF          3008 non-null   float64
+ 6   CODCONSUCODE         3359 non-null   int64  
+ 7   ESTADO               3359 non-null   object 
+ 8   ULTIMAACTUALIZACION  3359 non-null   object 
+dtypes: float64(1), int64(1), object(7)
+memory usage: 236.3+ KB
+----------------------------------------------------------------------
