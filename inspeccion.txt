@@ -188,3 +188,73 @@ Data columns (total 9 columns):
 dtypes: float64(1), int64(1), object(7)
 memory usage: 236.3+ KB
 ----------------------------------------------------------------------
+
+ Interpretación de los resultados de inspección
+1. Volumen de datos – manejable
+Tabla	Filas	Columnas	Tamaño estimado
+Adjudicaciones	63,373	25	~12 MB
+Proveedores	43,483	9	~3 MB
+Consorcios	27,748	5	~1 MB
+Contratos	62,608	24	~11.5 MB
+Entidades	3,359	9	~0.2 MB
+Todos caben en memoria RAM. No se requieren técnicas de big data.
+
+2. Problemas con RUC (clave para unir tablas)
+Tabla	Columna RUC	Tipo actual	¿Requiere limpieza?
+Adjudicaciones	entidad_ruc	object (texto)	
+Adjudicaciones	ruc_proveedor	object	
+Proveedores	RUC PROVEEDOR	object
+Consorcios	ruc_consorcio	object	
+Consorcios	ruc_miembro	object	
+Contratos	ruc_contratista	object
+Entidades	RUC	object
+⚠️ Observación: Aunque todos son object, algunos RUCs pueden tener menos de 11 dígitos (por ejemplo, 1720884 en consorcios tiene solo 7 dígitos). En la inspección de consorcios se ve 1720884 sin ceros a la izquierda. Esto impedirá unir correctamente con otras tablas.
+
+Solución: Normalizar todos los RUCs a 11 dígitos con ceros a la izquierda (str.zfill(11)).
+
+3. Fechas: mezcla de formatos y tipos
+Tabla	Columnas de fecha	Formato actual	Tipo
+Adjudicaciones	fecha_convocatoria, fecha_buenapro, fecha_consentimiento_bp	dd/mm/aaaa (texto)	object
+Proveedores	d_fec_iniciovigencia, d_fec_finvigencia	aaaa-mm-dd	datetime64 
+Contratos	todas las fechas	aaaa-mm-dd	datetime64 
+Entidades	ULTIMAACTUALIZACION	dd/mm/aa (texto)	object
+Problema: Las fechas en adjudicaciones y entidades son object (texto). No se pueden hacer operaciones temporales ni cálculos de diferencias.
+
+Solución: Convertir a datetime usando format='%d/%m/%Y' para adjudicaciones y format='%d/%m/%y' para entidades.
+
+4. Valores nulos – no masivos, pero hay que manejarlos
+Tabla	Columna|Nulos|Porcentaje|Acción sugerida
+Adjudicaciones	monto_referencial_item_soles	1	0.0016%	Eliminar fila
+Adjudicaciones	departamento_item	285	0.45%	Rellenar con 'No especificado' o imputar
+Adjudicaciones	fecha_buenapro	21	0.03%	Dejar como NaT (procesos sin buena pro aún)
+Adjudicaciones	fecha_consentimiento_bp	840	1.33%	Lo mismo
+Adjudicaciones	tipo_proveedor	1	0.0016%	Rellenar con 'No especificado'
+Contratos	monto_adicional, monto_reduccion, monto_prorroga, monto_complementario	muchísimos (solo 2718, 1771, 53, 0 no nulos)	>95%	Normal – rellenar con 0 (indica "no aplica")
+Contratos	tieneresolucion	860 de 62608	1.37%	Rellenar con 'NO'
+Entidades	CODIGO_SIAF	351	10.4%	Rellenar con -1 o dejar como NaN según análisis
+
+A diferencia de Hubway, no conviene hacer dropna() general porque perderíamos muchas filas. Mejor manejo selectivo.
+
+5. Columnas derivadas útiles (como la age en Hubway)
+Podemos crear columnas para enriquecer el análisis:
+- Tiempo hasta buena pro: (fecha_buenapro - fecha_convocatoria).dt.days
+- Año y mes de convocatoria: dt.year, dt.month
+- Porcentaje adjudicado respecto al referencial: (monto_adjudicado / monto_referencial) * 100
+- Duración del contrato (en contratos): (fecha_vigencia_final - fecha_vigencia_inicial).dt.days
+- Proveedor vigente (en proveedores): comparar fechas con hoy.
+
+6. Claves para unir tablas (relaciones)
+- Tabla principal	Columna	Tabla relacionada	Columna
+- Adjudicaciones	entidad_ruc	Entidades	RUC
+- Adjudicaciones	ruc_proveedor	Proveedores	RUC PROVEEDOR
+- Adjudicaciones	codigoconvocatoria	Contratos	codigoconvocatoria
+- Consorcios	ruc_consorcio	Adjudicaciones? (no directa)	(no aparece)
+- Consorcios	ruc_miembro	Proveedores	RUC PROVEEDOR
+Podremos enriquecer adjudicaciones con el departamento de la entidad y la ubicación del proveedor.
+
+Resumen de acciones inmediatas (limpieza)
+- Normalizar RUCs a 11 dígitos (todas las tablas).
+- Convertir fechas a datetime en adjudicaciones y entidades.
+- Manejar nulos según la tabla anterior.
+- Crear columnas derivadas (días, porcentajes, año/mes, etc.).
+- Unir tablas para análisis enriquecido (adjudicaciones + entidades + proveedores).
