@@ -206,20 +206,9 @@ Los procesos **abreviados** (concurso público abreviado, adjudicación simplifi
 La hipótesis de que **procesos más competitivos generan ahorro** se confirma: la subasta inversa es la más eficiente. La contratación directa es la menos eficiente (sobrecosto sistemático). Esto tiene implicaciones directas para recomendar el uso de mecanismos competitivos.
 
 ### 6.6 Red de actores
-<img width="1430" height="546" alt="image" src="https://github.com/user-attachments/assets/6d5b6d2d-c1e0-49f5-a0a5-15da176d2829" />
+<img width="1104" height="760" alt="image" src="https://github.com/user-attachments/assets/048d925e-d029-4dbc-9e09-01417380d3c0" />
 
-| Proveedor | Conexiones (grado) | Intermediación | PageRank |
-|-----------|--------------------|----------------|----------|
-| TECNOLOGIAS ECOLOGICAS PRISMA SAC | 2 | 0.000100 | **0.011400** |
-| Consorcio Puente Chalaco | 1 | 0.000000 | 0.008900 |
-| CONSORCIO HOSPITALARIO CHOTA | 1 | 0.000000 | 0.008700 |
-| CONSORCIO VIAL HUANDOY | 1 | 0.000000 | 0.008200 |
-| CONSORCIO EPIURA | 1 | 0.000000 | 0.007900 |
-| CONSORCIO HOSPITAL VIRU | 1 | 0.000000 | 0.007900 |
-| HANNOVER RÜCK SE | 1 | 0.000000 | 0.007800 |
-| CONSORCIO PP 911 | 1 | 0.000000 | 0.007800 |
-| INVERSIONES QUINTA HEEREN S.A. | 1 | 0.000000 | 0.007800 |
-| CONSORCIO PENAL PUCALLPA | 1 | 0.000000 | 0.007800 |
+<img width="1430" height="546" alt="image" src="https://github.com/user-attachments/assets/6d5b6d2d-c1e0-49f5-a0a5-15da176d2829" />
 
 **Observaciones:**  
 - **Tecnologías Ecológicas Prisma SAC** destaca con PageRank 0.0114, casi un 30% más que el segundo. Tiene **2 conexiones** (algo inusual, probablemente conectado a dos entidades grandes).  
