@@ -296,4 +296,3 @@ contrataciones/
 
 Este trabajo fue inspirado en el caso de estudio **Hubway** (análisis de bicicletas compartidas) y en las buenas prácticas de **pipeline de ciencia de datos**. Se agradece a la profesora por guiar el enfoque de preguntas → limpieza → visualización.
 
-**El README está preparado para incluir los resultados concretos una vez ejecutado el análisis. Se recomienda adjuntar capturas de pantalla de los gráficos más relevantes en la sección 6.**
